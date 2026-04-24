@@ -161,6 +161,11 @@
     #gallery { background: var(--bg); border-top: 1px solid var(--border); }
     .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; }
     .g-cell .img-ph { aspect-ratio: 1; border: none; }
+    .g-cell:hover img { transform: scale(1.05); }
+    .g-overlay { position:absolute; inset:0; background:linear-gradient(transparent 40%, rgba(7,8,10,0.92)); opacity:0; transition:opacity 0.3s; display:flex; flex-direction:column; justify-content:flex-end; padding:18px; }
+    .g-cell:hover .g-overlay { opacity:1; }
+    .g-title { font-family:var(--font-display); font-size:1.2rem; letter-spacing:0.05em; color:var(--lime); }
+    .g-desc  { font-size:0.78rem; color:rgba(238,240,244,0.65); margin-top:3px; line-height:1.4; }
 
     /* ── BUILDS ── */
     #builds { background: var(--surface); border-top: 1px solid var(--border); }
@@ -274,7 +279,7 @@
 <div id="hero" class="hero grid-bg">
   <div class="hero-left">
     <div class="badge">
-      <span>COL</span>
+      <span>🇨🇴</span>
       <span class="badge-text">100% Fabricado en Colombia</span>
     </div>
     <div class="hero-switch">
@@ -303,12 +308,8 @@
   </div>
   <div class="hero-right">
     <div class="hero-img-box">
-      <!-- TO ADD IMAGE: replace this div with <img src="img/nav25-full.jpg" style="width:100%;display:block;"> -->
-      <div class="hero-ph">
-        <div class="hero-ph-icon">🚁</div>
-        <div class="hero-ph-text">Sube tu foto aquí</div>
-        <span class="hero-ph-label sw" id="h-lbl">Nav25 — 2.5"</span>
-      </div>
+      <img src="img/NAV25-propsnostrap.jpeg" alt="Nav25 FPV Frame" style="width:100%;display:block;object-fit:cover;"/>
+      <span class="hero-ph-label sw" id="h-lbl" style="position:absolute;bottom:14px;right:16px;font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--lime);opacity:0.85;">Nav25 — 2.5"</span>
     </div>
   </div>
 </div>
@@ -341,11 +342,10 @@
         <div class="box" style="border-color:rgba(255,255,255,0.05);background:rgba(255,255,255,0.02);margin-top:8px;"><p class="box-title" style="color:var(--muted)">❌ No incluye</p><p class="box-body">Stack · Motores · Props · Baterías · RX · VTX</p></div>
       </div>
       <div class="img-grid4">
-        <!-- Replace .img-ph divs with <img src="img/nav25-XXX.jpg"> when ready -->
-        <div class="img-cell"><div class="img-ph"><div class="img-ph-icon">📷</div><div class="img-ph-text">nav25-full.jpg</div></div></div>
-        <div class="img-cell"><div class="img-ph"><div class="img-ph-icon">📷</div><div class="img-ph-text">nav25-top.jpg</div></div></div>
-        <div class="img-cell"><div class="img-ph"><div class="img-ph-icon">📷</div><div class="img-ph-text">nav25-legs.jpg</div></div></div>
-        <div class="img-cell"><div class="img-ph"><div class="img-ph-icon">📷</div><div class="img-ph-text">nav25-canopy.jpg</div></div></div>
+        <div class="img-cell"><img src="img/NAV25-nopropsnostrap.jpeg" alt="Frame sin hélices" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;"/></div>
+        <div class="img-cell"><img src="img/NAV25-topangle.jpeg"       alt="Vista superior"   style="width:100%;aspect-ratio:1;object-fit:cover;display:block;"/></div>
+        <div class="img-cell"><img src="img/NAV25-sidecam.jpeg"        alt="Canopy lateral"   style="width:100%;aspect-ratio:1;object-fit:cover;display:block;"/></div>
+        <div class="img-cell"><img src="img/NAV25-motorprop.jpeg"      alt="Motor y hélice"   style="width:100%;aspect-ratio:1;object-fit:cover;display:block;"/></div>
       </div>
     </div>
   </div>
@@ -358,10 +358,22 @@
     <h2 class="sec-title">NAV<span class="sw" id="gl-num">25</span><br><span style="color:var(--lime)">EN DETALLE</span></h2>
   </div>
   <div class="gallery-grid">
-    <div class="g-cell"><div class="img-ph"><div class="img-ph-icon">📷</div><div class="img-ph-text">Frame completo<br>nav25-full.jpg</div></div></div>
-    <div class="g-cell"><div class="img-ph"><div class="img-ph-icon">📷</div><div class="img-ph-text">Vista superior<br>nav25-top.jpg</div></div></div>
-    <div class="g-cell"><div class="img-ph"><div class="img-ph-icon">📷</div><div class="img-ph-text">Patas 3D<br>nav25-legs.jpg</div></div></div>
-    <div class="g-cell"><div class="img-ph"><div class="img-ph-icon">📷</div><div class="img-ph-text">Canopy<br>nav25-canopy.jpg</div></div></div>
+    <div class="g-cell" style="position:relative;overflow:hidden;">
+      <img src="img/NAV25-propsnostrap.jpeg" alt="Frame completo" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;transition:transform 0.5s;"/>
+      <div class="g-overlay"><div class="g-title">Frame Completo</div><div class="g-desc">Con hélices Gemfan 2520 · Canopy PP</div></div>
+    </div>
+    <div class="g-cell" style="position:relative;overflow:hidden;">
+      <img src="img/NAV25-top.jpeg" alt="Vista superior" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;transition:transform 0.5s;"/>
+      <div class="g-overlay"><div class="g-title">Vista Superior</div><div class="g-desc">Fibra de carbono T700 · Placa 3mm</div></div>
+    </div>
+    <div class="g-cell" style="position:relative;overflow:hidden;">
+      <img src="img/NAVfront.jpeg" alt="Canopy frontal" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;transition:transform 0.5s;"/>
+      <div class="g-overlay"><div class="g-title">Canopy 3D</div><div class="g-desc">Compatible analógico 19mm · DJI O3 · O4</div></div>
+    </div>
+    <div class="g-cell" style="position:relative;overflow:hidden;">
+      <img src="img/NAV25-motorprop.jpeg" alt="Motor y hélice" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;transition:transform 0.5s;"/>
+      <div class="g-overlay"><div class="g-title">Motor + Hélice</div><div class="g-desc">Patas protectoras PP · Gemfan 2520</div></div>
+    </div>
   </div>
 </section>
 
@@ -413,7 +425,7 @@
       </thead>
       <tbody>
         <tr class="drow"><td>Hélices</td><td>2.5"</td><td>2"</td></tr>
-        <tr class="drow"><td>Placa inferior</td><td>3mm — Nav25</td><td>2.5mm — Nav20</td></tr>
+        <tr class="drow"><td>Placa inferior</td><td>3mm — Nav25</td><td>3mm — Nav20</td></tr>
         <tr><td>Placa superior</td><td>2.5 mm</td><td>2.5 mm</td></tr>
         <tr><td>Peso</td><td>22.6 g</td><td>22.6 g</td></tr>
         <tr><td>Stack Mounting</td><td>20×20 / 25×25 mm</td><td>20×20 / 25×25 mm</td></tr>
@@ -509,8 +521,8 @@
     '20': {
       name:'NAV20', num:'20',
       sub:'La versión compacta del Nav25. Misma calidad y compatibilidad, con placa inferior diseñada para hélices de 2" — más ágil en espacios cerrados.',
-      wt:'18.5g', wtF:'18.5 gramos', pr:'2"', prF:'2 pulgadas',
-      bt:'2.5mm — Nav20', lbl:'Nav20 — 2"',
+      wt:'22.6g', wtF:'22.6 gramos', pr:'2"', prF:'2 pulgadas',
+      bt:'3mm — Nav20', lbl:'Nav20 — 2"',
       wa:'Hola,%20me%20interesa%20el%20Nav20', waT:'Consultar por el Nav20 →',
       b1m:'1103 — 11000 KV', b1p:'Gemfan 2035',
       b2m:'1103 — 11000 KV · 1202.5 — 11000 KV', b2p:'Gemfan 2035',
