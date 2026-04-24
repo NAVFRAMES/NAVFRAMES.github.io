@@ -301,7 +301,7 @@
     <div class="hero-stats">
       <div class="stat"><span class="stat-v sw" id="h-wt">22.6g</span><span class="stat-k">Peso</span></div>
       <div class="stat"><span class="stat-v sw" id="h-pr">2.5"</span><span class="stat-k">Hélices</span></div>
-      <div class="stat"><span class="stat-v">3mm</span><span class="stat-k">Bottom</span></div>
+      <div class="stat"><span class="stat-v sw" id="h-bt">3mm</span><span class="stat-k">Bottom</span></div>
       <div class="stat"><span class="stat-v">3S</span><span class="stat-k">LiPo Máx</span></div>
     </div>
   </div>
@@ -511,7 +511,7 @@
       name:'NAV25', num:'25',
       sub:'Diseño premium en fibra de carbono de 3mm para pilotos exigentes. Ultraligero, resistente y compatible con los sistemas digitales más avanzados.',
       wt:'22.6g', wtF:'22.6 gramos', pr:'2.5"', prF:'2.5 pulgadas',
-      bt:'3mm — Nav25', lbl:'Nav25 — 2.5"',
+      btStat:'3mm', bt:'3mm — Nav25', lbl:'Nav25 — 2.5"',
       wa:'Hola,%20me%20interesa%20el%20Nav25', waT:'Consultar por el Nav25 →',
       b1m:'1104 — 7200 KV',  b1p:'Gemfan 2520',
       b2m:'1103 — 11000 KV · 1202.5 — 11000 KV', b2p:'Gemfan 2520',
@@ -527,7 +527,7 @@
       name:'NAV20', num:'20',
       sub:'La versión compacta del Nav25. Misma calidad y compatibilidad, con placa inferior diseñada para hélices de 2" — más ágil en espacios cerrados.',
       wt:'18.5g', wtF:'18.5 gramos', pr:'2"', prF:'2 pulgadas',
-      bt:'2.5mm — Nav20', lbl:'Nav20 — 2"',
+      btStat:'2.5mm', bt:'2.5mm — Nav20', lbl:'Nav20 — 2"',
       wa:'Hola,%20me%20interesa%20el%20Nav20', waT:'Consultar por el Nav20 →',
       b1m:'1103 — 11000 KV', b1p:'Gemfan 2035',
       b2m:'1103 — 11000 KV · 1202.5 — 11000 KV', b2p:'Gemfan 2035',
@@ -567,7 +567,7 @@
 
     // Text swaps
     sw('h-name', d.name);  sw('h-sub',  d.sub);
-    sw('h-wt',   d.wt);    sw('h-pr',   d.pr);
+    sw('h-wt',   d.wt);    sw('h-pr',   d.pr);    sw('h-bt', d.btStat);
     sw('h-lbl',  d.lbl);
     sw('sp-name',d.name);  sw('sp-wt',  d.wtF);
     sw('sp-bt',  d.bt);    sw('sp-pr',  d.prF);
