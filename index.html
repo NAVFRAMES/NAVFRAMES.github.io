@@ -19,7 +19,6 @@
       --blue-col:   #003893;
       --red-col:    #ce1126;
 
-      /* System font stacks — no network needed */
       --font-display: 'Impact', 'Arial Black', 'Franklin Gothic Medium', Arial, sans-serif;
       --font-body:    system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
       --font-mono:    'Consolas', 'Courier New', 'Lucida Console', monospace;
@@ -28,7 +27,6 @@
     html  { scroll-behavior: smooth; }
     body  { background: var(--bg); color: var(--white); font-family: var(--font-body); overflow-x: hidden; }
 
-    /* ── GRID BG ── */
     .grid-bg::before {
       content: ''; position: absolute; inset: 0; pointer-events: none;
       background-image:
@@ -37,7 +35,6 @@
       background-size: 60px 60px;
     }
 
-    /* ── IMAGE PLACEHOLDER ── */
     .img-ph {
       width: 100%; aspect-ratio: 1;
       background:
@@ -152,6 +149,7 @@
     .img-grid4 { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
     .img-cell  { position: relative; overflow: hidden; }
     .img-cell .img-ph { border: none; }
+    .img-cell img { transition: opacity 0.2s; }
 
     .box { margin-top: 20px; border: 1px solid rgba(184,255,46,0.15); background: rgba(184,255,46,0.04); padding: 18px 22px; }
     .box-title { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--lime); margin-bottom: 8px; }
@@ -162,6 +160,7 @@
     .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; }
     .g-cell .img-ph { aspect-ratio: 1; border: none; }
     .g-cell:hover img { transform: scale(1.05); }
+    .g-cell img { transition: transform 0.5s, opacity 0.2s; }
     .g-overlay { position:absolute; inset:0; background:linear-gradient(transparent 40%, rgba(7,8,10,0.92)); opacity:0; transition:opacity 0.3s; display:flex; flex-direction:column; justify-content:flex-end; padding:18px; }
     .g-cell:hover .g-overlay { opacity:1; }
     .g-title { font-family:var(--font-display); font-size:1.2rem; letter-spacing:0.05em; color:var(--lime); }
@@ -308,7 +307,7 @@
   </div>
   <div class="hero-right">
     <div class="hero-img-box">
-      <img src="img/NAV25-propsnostrap.jpeg" alt="Nav25 FPV Frame" style="width:100%;display:block;object-fit:cover;"/>
+      <img id="hero-img" src="img/NAV25-propsnostrap.jpeg" alt="Nav FPV Frame" style="width:100%;display:block;object-fit:cover;transition:opacity 0.2s;"/>
       <span class="hero-ph-label sw" id="h-lbl" style="position:absolute;bottom:14px;right:16px;font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--lime);opacity:0.85;">Nav25 — 2.5"</span>
     </div>
   </div>
@@ -359,19 +358,19 @@
   </div>
   <div class="gallery-grid">
     <div class="g-cell" style="position:relative;overflow:hidden;">
-      <img src="img/NAV25-propsnostrap.jpeg" alt="Frame completo" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;transition:transform 0.5s;"/>
+      <img src="img/NAV25-propsnostrap.jpeg" alt="Frame completo" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;"/>
       <div class="g-overlay"><div class="g-title">Frame Completo</div><div class="g-desc">Con hélices Gemfan 2520 · Canopy PP</div></div>
     </div>
     <div class="g-cell" style="position:relative;overflow:hidden;">
-      <img src="img/NAV25-top.jpeg" alt="Vista superior" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;transition:transform 0.5s;"/>
+      <img src="img/NAV25-top.jpeg" alt="Vista superior" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;"/>
       <div class="g-overlay"><div class="g-title">Vista Superior</div><div class="g-desc">Fibra de carbono T700 · Placa 3mm</div></div>
     </div>
     <div class="g-cell" style="position:relative;overflow:hidden;">
-      <img src="img/NAVfront.jpeg" alt="Canopy frontal" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;transition:transform 0.5s;"/>
+      <img src="img/NAVfront.jpeg" alt="Canopy frontal" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;"/>
       <div class="g-overlay"><div class="g-title">Canopy 3D</div><div class="g-desc">Compatible analógico 19mm · DJI O3 · O4</div></div>
     </div>
     <div class="g-cell" style="position:relative;overflow:hidden;">
-      <img src="img/NAV25-motorprop.jpeg" alt="Motor y hélice" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;transition:transform 0.5s;"/>
+      <img src="img/NAV25-motorprop.jpeg" alt="Motor y hélice" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;"/>
       <div class="g-overlay"><div class="g-title">Motor + Hélice</div><div class="g-desc">Patas protectoras PP · Gemfan 2520</div></div>
     </div>
   </div>
@@ -427,7 +426,7 @@
         <tr class="drow"><td>Hélices</td><td>2.5"</td><td>2"</td></tr>
         <tr class="drow"><td>Placa inferior</td><td>3mm — Nav25</td><td>2.5mm — Nav20</td></tr>
         <tr><td>Placa superior</td><td>2.5 mm</td><td>2.5 mm</td></tr>
-        <tr><td>Peso</td><td>22.6 g</td><td>18.5 g</td></tr>
+        <tr class="drow"><td>Peso</td><td>22.6 g</td><td>18.5 g</td></tr>
         <tr><td>Stack Mounting</td><td>20×20 / 25×25 mm</td><td>20×20 / 25×25 mm</td></tr>
         <tr><td>Voltaje</td><td>2S – 3S LiPo</td><td>2S – 3S LiPo</td></tr>
         <tr><td>Cámaras</td><td>19mm · DJI O3 · O4</td><td>19mm · DJI O3 · O4</td></tr>
@@ -516,17 +515,30 @@
       wa:'Hola,%20me%20interesa%20el%20Nav25', waT:'Consultar por el Nav25 →',
       b1m:'1104 — 7200 KV',  b1p:'Gemfan 2520',
       b2m:'1103 — 11000 KV · 1202.5 — 11000 KV', b2p:'Gemfan 2520',
-      b3m:'1103 — 8500 KV',  b3p:'Gemfan 2520'
+      b3m:'1103 — 8500 KV',  b3p:'Gemfan 2520',
+      // ── Imágenes NAV25 ──────────────────────────────────────
+      heroImg:  'img/NAV25-propsnostrap.jpeg',
+      specs:    ['img/NAV25-nopropsnostrap.jpeg','img/NAV25-topangle.jpeg','img/NAV25-sidecam.jpeg','img/NAV25-motorprop.jpeg'],
+      gallery:  ['img/NAV25-propsnostrap.jpeg','img/NAV25-top.jpeg','img/NAVfront.jpeg','img/NAV25-motorprop.jpeg'],
+      galTitles:['Frame Completo','Vista Superior','Canopy 3D','Motor + Hélice'],
+      galDescs: ['Con hélices Gemfan 2520 · Canopy PP','Fibra de carbono T700 · Placa 3mm','Compatible analógico 19mm · DJI O3 · O4','Patas protectoras PP · Gemfan 2520']
     },
     '20': {
       name:'NAV20', num:'20',
       sub:'La versión compacta del Nav25. Misma calidad y compatibilidad, con placa inferior diseñada para hélices de 2" — más ágil en espacios cerrados.',
-      wt:'22.6g', wtF:'22.6 gramos', pr:'2"', prF:'2 pulgadas',
-      bt:'3mm — Nav20', lbl:'Nav20 — 2"',
+      wt:'18.5g', wtF:'18.5 gramos', pr:'2"', prF:'2 pulgadas',
+      bt:'2.5mm — Nav20', lbl:'Nav20 — 2"',
       wa:'Hola,%20me%20interesa%20el%20Nav20', waT:'Consultar por el Nav20 →',
       b1m:'1103 — 11000 KV', b1p:'Gemfan 2035',
       b2m:'1103 — 11000 KV · 1202.5 — 11000 KV', b2p:'Gemfan 2035',
-      b3m:'1103 — 8500 KV',  b3p:'Gemfan 2035'
+      b3m:'1103 — 8500 KV',  b3p:'Gemfan 2035',
+      // ── Imágenes NAV20 — reemplaza con tus fotos reales ─────
+      // Sube estas fotos a la carpeta img/ en GitHub:
+      heroImg:  'img/NAV20-full.jpeg',
+      specs:    ['img/NAV20-noprops.jpeg','img/NAV20-top.jpeg','img/NAV20-sidecam.jpeg','img/NAV20-motor.jpeg'],
+      gallery:  ['img/NAV20-full.jpeg','img/NAV20-top.jpeg','img/NAV20-front.jpeg','img/NAV20-motor.jpeg'],
+      galTitles:['Frame Completo','Vista Superior','Canopy 3D','Motor + Hélice'],
+      galDescs: ['Con hélices Gemfan 2035 · Canopy PP','Fibra de carbono T700 · Placa 2.5mm','Compatible analógico 19mm · DJI O3 · O4','Patas protectoras PP · Gemfan 2035']
     }
   };
 
@@ -539,6 +551,11 @@
     setTimeout(function(){ el.textContent = val; el.classList.remove('out'); }, 180);
   }
 
+  function swapImg(el, src) {
+    el.style.opacity = '0';
+    setTimeout(function(){ el.src = src; el.style.opacity = '1'; }, 200);
+  }
+
   function setModel(m) {
     if (m === cur) return;
     cur = m;
@@ -548,6 +565,7 @@
       b.classList.toggle('active', b.getAttribute('onclick').indexOf("'"+m+"'") > -1);
     });
 
+    // Text swaps
     sw('h-name', d.name);  sw('h-sub',  d.sub);
     sw('h-wt',   d.wt);    sw('h-pr',   d.pr);
     sw('h-lbl',  d.lbl);
@@ -559,10 +577,28 @@
     sw('b2m',d.b2m); sw('b2p',d.b2p);
     sw('b3m',d.b3m); sw('b3p',d.b3p);
     sw('ct-name',d.name);  sw('ct-wa-t',d.waT);
-
     document.getElementById('nav-num').textContent = d.num;
     document.getElementById('ft-num').textContent  = d.num;
 
+    // Hero image
+    swapImg(document.getElementById('hero-img'), d.heroImg);
+
+    // Specs grid images
+    document.querySelectorAll('.img-grid4 img').forEach(function(img, i){
+      if (d.specs[i]) swapImg(img, d.specs[i]);
+    });
+
+    // Gallery images + captions
+    document.querySelectorAll('.gallery-grid .g-cell').forEach(function(cell, i){
+      var img   = cell.querySelector('img');
+      var title = cell.querySelector('.g-title');
+      var desc  = cell.querySelector('.g-desc');
+      if (img   && d.gallery[i])    swapImg(img, d.gallery[i]);
+      if (title && d.galTitles[i])  title.textContent = d.galTitles[i];
+      if (desc  && d.galDescs[i])   desc.textContent  = d.galDescs[i];
+    });
+
+    // WhatsApp links
     var url = 'https://wa.me/573104176563?text=' + d.wa;
     ['nav-wa','h-wa','ct-wa'].forEach(function(id){
       var el = document.getElementById(id);
